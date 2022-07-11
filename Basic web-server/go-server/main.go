@@ -6,6 +6,7 @@ import (
 	"net/http"
 )
 
+//
 func formHandler(w http.ResponseWriter, r *http.Request) {
 	if err := r.ParseForm(); err != nil {
 		fmt.Fprintf(w, "ParseForm() error: %v", err)
@@ -26,18 +27,21 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "405 method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
-
 	fmt.Fprint(w, "Hello, World!")
 }
 
 func main() {
+	//Assigning path for static page
 	var fileServer = http.FileServer(http.Dir("./static"))
+
+	//Setting routes
 	http.Handle("/", fileServer)
 	http.HandleFunc("/form", formHandler)
 	http.HandleFunc("/hello", helloHandler)
 
 	fmt.Printf("Server started on port 8080\n")
-	if err := http.ListenAndServe(":8080", nil); err != nil {
+	var err any
+	if err = http.ListenAndServe(":8080", nil); err != nil {
 		log.Fatal(err)
 	}
 }

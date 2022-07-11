@@ -1,0 +1,10 @@
+{
+    "[go]": {
+        "editor.insertSpaces": false,
+        "editor.formatOnSave": false,
+        "editor.defaultFormatter": "gofmt"
+    },
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": false
+    }
+}
