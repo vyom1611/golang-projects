@@ -1,5 +1,15 @@
 package newsfeed
 
+type Getter interface {
+	//Getting a slice of all items
+	GetAll() []Item
+}
+
+type Adder interface {
+	//Taking in one item to be added to Repo
+	Add(item Item)
+}
+
 //JSON schema
 type Item struct {
 	Title string `json:"title"`
@@ -11,7 +21,9 @@ type Repo struct {
 }
 
 func New() *Repo {
-	return &Repo{}
+	return &Repo{
+		Items: []Item{},
+	}
 }
 func (r *Repo) Add(item Item) {
 	r.Items = append(r.Items, item)

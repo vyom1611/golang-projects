@@ -2,13 +2,14 @@ package handler
 
 import (
 	"github.com/gin-gonic/gin"
+	"main.go/platform/newsfeed"
 	"net/http"
 )
 
-func NewsfeedGet() gin.HandlerFunc {
+func NewsfeedGet(feed newsfeed.Getter) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		c.JSON(http.StatusOK, map[string]string{
-			"hello": "Found Me",
-		})
+		//Getting all items
+		results := feed.GetAll()
+		c.JSON(http.StatusOK, results)
 	}
 }
