@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/vyom/golang-projects/golang projects github/golang-projects-1'
+make: Leaving directory `/Users/vyom/golang-projects/golang projects github/golang-projects-1'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
